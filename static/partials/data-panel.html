@@ -1,0 +1,13 @@
+{{ define "DataPanel"}}
+<ul class="text-center my-10">
+  <li style="font-size: 20px" class="font-poppins font-medium">
+    IP: {{ .IP }}
+  </li>
+  {{ range .Data }}
+  <li class="my-2">
+    <span class="font-medium font-poppins">{{ .Title }}:</span>
+    <span>&nbsp;{{ .Content }}</span>
+  </li>
+  {{end }}
+</ul>
+{{ end }}

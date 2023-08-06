@@ -1,0 +1,17 @@
+{{ define "SearchIPResult" }} {{ template "DataPanel" . }}
+<form
+  hx-post="/get-map"
+  hx-swap="innerHTML"
+  hx-target="#map-parent"
+  hx-ex="json-enc"
+  class="flex justify-center"
+>
+  <input name="Coordinates" hidden value="{{ .Coordinates }}" />
+  <button
+    type="submit"
+    class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-white bg-neutral-900 shadow hover:bg-neutral-900/90 h-9 px-4 py-2 mb-10"
+  >
+    Show map
+  </button>
+</form>
+{{end}}
