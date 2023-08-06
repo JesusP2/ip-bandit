@@ -3,13 +3,18 @@ package main
 import (
 	"net/http"
 
-	"github.com/labstack/echo/v4"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "wowzers x2")
+	r := gin.Default()
+  r.Static("/static", "./static/css")
+	r.LoadHTMLGlob("static/**/*")
+	r.GET("/hello", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "home", gin.H{
+			"Title": "Main website",
+			"IP":    c.RemoteIP(),
+		})
 	})
-	e.Logger.Fatal(e.Start(":8080"))
+	r.Run(":8080")
 }
