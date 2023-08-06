@@ -3,13 +3,14 @@
 <html class="h-full">
   {{ template "Head" . }}
   <body class="h-full">
-    <main class="max-w-3xl w-full mx-auto mt-[5%]">
+    <main class="max-w-3xl w-full mx-auto py-20">
       <div
         class="flex justify-center space-x-2 p-1 rounded-md bg-neutral-200 w-[345px] mx-auto"
       >
         {{ template "ActiveTab" .TabOne }} {{ template "InactiveTab" .TabTwo }}
       </div>
-      {{ template "DataPanel" . }}
+      {{ template "SearchIPResult" . }}
+      <div id="map-parent" style="width: 100%" class="mx-auto">
     </main>
   </body>
 </html>

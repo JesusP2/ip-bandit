@@ -31,10 +31,11 @@ func main() {
 			panic(err)
 		}
 		c.HTML(http.StatusOK, "MyIp", gin.H{
-			"TabOne": Tab{TabContent: "My IP", TabUrl: "/"},
-			"TabTwo": Tab{TabContent: "Search IP", TabUrl: "/search-ip"},
-			"Title":  "Main website",
-			"IP":     c.RemoteIP(),
+			"TabOne":      Tab{TabContent: "My IP", TabUrl: "/"},
+			"TabTwo":      Tab{TabContent: "Search IP", TabUrl: "/search-ip"},
+			"Title":       "Main website",
+			"IP":          c.RemoteIP(),
+			"Coordinates": fmt.Sprintf("%f,%f", results.Latitude, results.Longitude),
 			"Data": [6]Item{
 				{Title: "Country", Content: results.Country_long},
 				{Title: "Region", Content: results.Region},
@@ -47,10 +48,9 @@ func main() {
 	})
 	r.GET("/search-ip", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "SearchIP", gin.H{
-			"TabOne":      Tab{TabContent: "My IP", TabUrl: "/"},
-			"TabTwo":      Tab{TabContent: "Search IP", TabUrl: "/search-ip"},
-			"Title":       "Main website",
-			"Coordinates": "25.038172,121.5636",
+			"TabOne": Tab{TabContent: "My IP", TabUrl: "/"},
+			"TabTwo": Tab{TabContent: "Search IP", TabUrl: "/search-ip"},
+			"Title":  "Main website",
 		})
 	})
 
@@ -78,7 +78,6 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-    fmt.Println(coordinates)
 		c.HTML(http.StatusOK, "Map", gin.H{
 			"Coordinates": coordinates,
 		})
